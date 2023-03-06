@@ -1,0 +1,27 @@
+{
+	"name": "eslint-plugin-non-latin",
+	"version": "1.0.0",
+	"main": "index.js",
+	"directories": {
+		"doc": "docs",
+		"rules": "rules"
+	},
+	"scripts": {
+		"lint": "eslint ./**/*.js"
+	},
+	"keywords": [
+		"plugin",
+		"eslint",
+		"lint",
+		"string",
+		"latin",
+		"non-latin",
+		"cyrillic",
+		"error"
+	],
+	"devDependencies": {
+	},
+	"peerDependencies": {
+		"eslint": ">=6.8.0"
+	}
+}
