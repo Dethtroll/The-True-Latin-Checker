@@ -9,6 +9,11 @@
 	"scripts": {
 		"lint": "eslint ./**/*.js"
 	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Dethtroll/eslint-plugin-non-latin.git"
+	},
+	"license": "ISC",
 	"keywords": [
 		"plugin",
 		"eslint",
