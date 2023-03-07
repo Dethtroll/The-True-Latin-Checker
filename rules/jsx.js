@@ -5,7 +5,7 @@ const { hasStringNonLatin } = require("./shared");
 module.exports = {
 	meta: {
 		docs: {
-			description: "Disable non-latin string literals",
+			description: "Disable non-latin jsx",
 			category: "Stylistic Issues",
 			recommended: false
 		},
@@ -14,17 +14,12 @@ module.exports = {
 	},
 	create: function(context) {
 		return {
-			Literal(node) {
-				const isStringLiteral = (typeof node.value == "string");
-				if (!isStringLiteral) {
-					return;
-				}
-
+			JSXText(node) {
 				const { value } = node;
 				if (hasStringNonLatin(value)) {
 					context.report({
 						node,
-						message: 'Strings must be without non-latin text'
+						message: "Strings must be without non-latin text"
 					});
 				}
 			}

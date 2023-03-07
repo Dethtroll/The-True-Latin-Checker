@@ -1,6 +1,6 @@
 "use strict";
 
-const { hasStringNonLatin } = require("./shared");
+const { hasStringCyrilic } = require("./shared");
 
 module.exports = {
 	meta: {
@@ -21,13 +21,13 @@ module.exports = {
 				}
 
 				const { value } = node;
-				if (hasStringNonLatin(value)) {
+				if (hasStringCyrilic(value)) {
 					context.report({
 						node,
-						message: 'Strings must be without non-latin text'
+						message: 'Strings must be without cyrilic text'
 					});
 				}
-			}
+			},
 		};
 	}
 };

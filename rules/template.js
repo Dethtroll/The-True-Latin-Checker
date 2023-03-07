@@ -5,7 +5,7 @@ const { hasStringNonLatin } = require("./shared");
 module.exports = {
 	meta: {
 		docs: {
-			description: "Disable non-latin string literals",
+			description: "Disable non-latin template",
 			category: "Stylistic Issues",
 			recommended: false
 		},
@@ -14,17 +14,14 @@ module.exports = {
 	},
 	create: function(context) {
 		return {
-			Literal(node) {
-				const isStringLiteral = (typeof node.value == "string");
-				if (!isStringLiteral) {
-					return;
-				}
 
-				const { value } = node;
-				if (hasStringNonLatin(value)) {
+			TemplateElement(node) {
+				const templateContent = node.value.raw;
+
+				if (hasStringNonLatin(templateContent)) {
 					context.report({
 						node,
-						message: 'Strings must be without non-latin text'
+						message: "Strings must be without non-latin text"
 					});
 				}
 			}
