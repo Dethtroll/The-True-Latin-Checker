@@ -1,6 +1,6 @@
 "use strict";
 
-const { hasStringNonLatin } = require("./shared");
+const { hasStringNonLatin } = require('./_helpers');
 
 module.exports = {
 	meta: {

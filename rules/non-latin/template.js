@@ -1,11 +1,11 @@
 "use strict";
 
-const { hasStringNonLatin } = require("./shared");
+const { hasStringNonLatin } = require('./_helpers');
 
 module.exports = {
 	meta: {
 		docs: {
-			description: "Disable non-latin jsx",
+			description: "Disable non-latin template",
 			category: "Stylistic Issues",
 			recommended: false
 		},
@@ -14,9 +14,11 @@ module.exports = {
 	},
 	create: function(context) {
 		return {
-			JSXText(node) {
-				const { value } = node;
-				if (hasStringNonLatin(value)) {
+
+			TemplateElement(node) {
+				const templateContent = node.value.raw;
+
+				if (hasStringNonLatin(templateContent)) {
 					context.report({
 						node,
 						message: "Strings must be without non-latin text"
