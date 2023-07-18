@@ -5,7 +5,7 @@ const { hasStringCyrilic } = require("./shared");
 module.exports = {
 	meta: {
 		docs: {
-			description: "Disable non-latin string literals",
+			description: "Disable cyrilic string literals",
 			category: "Stylistic Issues",
 			recommended: false
 		},
