@@ -1,33 +1,12 @@
-"use strict";
+'use strict';
 
-const { hasStringCyrilic } = require("./shared");
+const { hasStringCyrilic } = require('./_helpers');
+const { getRule } = require('../core/string-literals');
 
 module.exports = {
-	meta: {
-		docs: {
-			description: "Disable cyrilic string literals",
-			category: "Stylistic Issues",
-			recommended: false
-		},
-		fixable: null,
-		schema: [],
-	},
-	create: function(context) {
-		return {
-			Literal(node) {
-				const isStringLiteral = (typeof node.value == "string");
-				if (!isStringLiteral) {
-					return;
-				}
-
-				const { value } = node;
-				if (hasStringCyrilic(value)) {
-					context.report({
-						node,
-						message: 'Strings must be without cyrilic text'
-					});
-				}
-			},
-		};
-	}
+	...getRule(
+		'Disable cyrilic string literals',
+		'Strings must be without cyrilic text',
+		hasStringCyrilic,
+	),
 };
